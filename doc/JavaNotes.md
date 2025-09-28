@@ -27859,7 +27859,7 @@ class A {
 
 >Upcasting argümandan parametreye aktarım ve metodun geri dönüş değerinde geçici değişkene atama durumlarında da geçerlidir. 
 
->Upcasting ile özellikle türden bağımsız (type independent) kodlar yazılabilmektedir. Aşağıdaki demo örnekte A hiyararşisine yeni bir sınıf eklendiğinde yani A dan doğrudan ya da dolaylı olarak yeni bir sınıf türetildiğinde Sample sınıfına ve DemoApp sınıfının kodlarının değia da kodlarına eklenti yapılması gerekmez. İşte bu demo örnekte Sample sınıfı ve DemoApp sınıfı A'dan türeyenlerden bağımsız yazılmıştır. Başka bir deyişle Sampe ve DemoApp sınıfı A hiyerarşisinde yalnızca A sınıfına bağlıdır (dependency) 
+>Upcasting ile özellikle türden bağımsız (type independent) kodlar yazılabilmektedir. Aşağıdaki demo örnekte A hiyararşisine yeni bir sınıf eklendiğinde yani A dan doğrudan ya da dolaylı olarak yeni bir sınıf türetildiğinde Sample sınıfına ve DemoApp sınıfının kodlarına da kodlarına eklenti yapılması gerekmez. İşte bu demo örnekte Sample sınıfı ve DemoApp sınıfı A'dan türeyenlerden bağımsız yazılmıştır. Başka bir deyişle Sampe ve DemoApp sınıfı A hiyerarşisinde yalnızca A sınıfına bağlıdır (dependency) 
 
 ```java
 package org.csystem.app;  
@@ -28081,7 +28081,7 @@ class A {
 
 >Bu dönüşüm doğrudan yapılamaz, tür dönüştürme operatörü ile (explicit conversion/casting) yapılabilir. Aslında tür dönüştürme operatörü derlemeden geçmek içindir. Çalışma zamanında kaynak referansın (yani türemiş sınıf türünden referansın) dinamik türüne bakılır, dinamik tür hedef referansa ilişkin türü kapsıyorsa yani aralarından doğrudan ya da dolaylı olarak bir türetme ilişkisi varsa (nesnesel kapsama) **haklı dönüşüm (valid casting)**  olarak ele alınır ve akış devam eder. Kapsamıyorsa **haksız dönüşüm (invalid casting)** olarak ele alınır ve exception oluşur. 
 
->Aşağıdaki demo örneği inceleyiniz. Dinamil türlere göre akışı gözlemleyiniz
+>Aşağıdaki demo örneği inceleyiniz. Dinamik türlere göre akışı gözlemleyiniz
 
 ```java
 package org.csystem.app;  
@@ -28438,7 +28438,7 @@ public class DemoObjectArrayGeneratorApp {
 ##### 26 Aralık 2024
 ##### Sarmalayan Sınıflar (Wrapper Classes)
 
->JavaSE'de her temel türe karşılık gelen bir sınıf bulundurulmuştur. Bu sınıflara **sarmalayan sınıflar (wrapper classes)** denir. Bu sınıfların sarmalama dışında ilgili temel türe ilişkin pek çok yararlı elemanı bulunur. Anımsanacağı gibi Character dışında kalan sınıfların parseXXX metotları aldıkları yazıyı ilgili temel türe çevirmek için kullanılırlar. Sarmalayan sınıflar ve ilişkin oldukları temel türle şu şekildedir:
+>JavaSE'de her temel türe karşılık gelen bir sınıf bulundurulmuştur. Bu sınıflara **sarmalayan sınıflar (wrapper classes)** denir. Bu sınıfların sarmalama dışında ilgili temel türe ilişkin pek çok yararlı elemanı bulunur. Anımsanacağı gibi Character dışında kalan sınıfların parseXXX metotları aldıkları yazıyı ilgili temel türe çevirmek için kullanılırlar. Sarmalayan sınıflar ve ilişkin oldukları temel türler şu şekildedir:
 
 
 | Temel Tür | Sarmalayan Sınıf |
@@ -28457,7 +28457,7 @@ public class DemoObjectArrayGeneratorApp {
 >- Tamsayı ve gerçek sayı türlerine ilişkin sınıflar (Short, Integer, Long, Byte, Float, Double) `java.lang` paketi içerisindeki `Number` isimli sınıftan türetilmişlerdir. Bu sınıflara **numeric classes** da denilmektedir
 >- `Character` ve `Boolean` sınıfları Object sınıfından türetilmişlerdir. 
 >- Sarmalayan sınıfların ctor'ları `Java 9` ile birlikte `deprecated` olmuştur ve aynı zamanda ileleyen sürümlerde silineceği belirtilmiştir. Zaten ileride göreceğimiz nedenlerden dolayı `Java 5`'den itibaren bu sınıfların ctor'ları ile nesne yaratılması önerilmemektedir. Dolayısıyla `Java 5`'den itibaren programcılar tarafında da kullanılmamaktadır.
->- Sarmalayan sınıflar temel türden bir değerin heap'de tutulması için kullanılırlar. Anımsanacağı gibi temel türden bir değerin heap'de tutulmasına **kutulama (boxing)**, heap'de tutulan temel türden bir değerin elde edilmesine ise **kutu açma (unboxing)** denilmektedir. 
+>- Sarmalayan sınıflar temel türden bir değerin heap'de tutulması için kullanılırlar. Anımsanacağı gibi temel türden bir >değerin heap'de tutulmasına **kutulama (boxing)**, heap'de tutulan temel türden bir değerin elde edilmesine ise **kutu açma (unboxing)** denilmektedir. 
 >- Bu sınıflar `immutable`'dır. Yani kutuladıkları değer değiştirilemez.
 >- Bu sınıflar kutuladıkları değerlere ilişkin **ön bellek (cache)** kullanarak zaman ve bellek maliyetini minimize ederler.
 >- Sarmalayan sınıflara **platform classes** da denilmektedir.
@@ -28528,7 +28528,7 @@ class App {
 
 >Boolean sınıfına `Java 4` ile, diğer sarmalayan sınıflara `Java 5` ile birlikte ilgili temel türden parametreli **valueOf** factory metotları eklenmiştir (boxing). **valueOf** metotları bir ön bellek kullanırlar. Tamsayı türlerine ilişkin sarmalayan sınıfların valueOf metotları `[-128, 127]` aralığındaki değerler için bir ön bellek tutar. Bu aralıktaki bir değer için ilgili nesne değer ilk kez sarmalandığında yaratılır, diğer sarmalamalarda aynı nesnenin referansına geri dönülür. Bu sınırlar dışında kalan değerler için ön bellek tutulup tutulmayacağı derleyici yazanlar bırakılmıştır (implementation defined). Character sınıfının `valueOf` metodu `['\u0000', '\u007F']` aralığındakİ değerleri için bir ön bellek tutar.  Bu sınırlar dışında kalan değerler için ön bellek tutulup tutulmayacağı derleyici yazanlar bırakılmıştır . Gerçek sayı türlerine ilişkin sarmalayan sınıfların (Float, Double) valueOf metotları tutuluş formatına uygun olarak bir ön bellek tutarlar. Bu sınıfların ön bellek kullanmasındaki temel amaç **to yield significantly better space and time performance** içindir.
 
-**Anahtar Notlar:** Daha önce yazmış olduğumuz `IntValue` sınıfını inceleyiniz
+**Anahtar Notlar:** Daha önce yazmış olduğumuz `IntValue` sınıfını inceleyiniz.
 
 >Aşağıdaki demo örneği inceleyiniz. 
 >**Not:** Örnekte static kod analizi araçları tarafından verilen uyarıları şimdilik dikkate almayınız
@@ -29077,7 +29077,7 @@ class Sample {
 
 ##### 16 Ocak 2024
 
->Aşağıdaki demo örnekte nesney gösteren referans null yapılmasına karşın nesne eligible duruma gelmemiştir. Çünkü nesneyi gösteren bir referans daha bulunmaktadır
+>Aşağıdaki demo örnekte nesneyi gösteren referans null yapılmasına karşın nesne eligible duruma gelmemiştir. Çünkü nesneyi gösteren bir referans daha bulunmaktadır
 
 ```java
 package org.csystem.app;  
@@ -29210,7 +29210,7 @@ class DemoApp {
 ```
 
 
->Yukarıdaki durumlar dışında da kullanımlar söz konusu olabilir. Yukarıdaki kullanımlar daha geneldir.
+>Yukarıdaki durumlar dışında da kullanımlar söz konusu olabilir. Yukarıdaki kullanımlar çok karşımıza çıkar.
 
 #### this Referansı
 
@@ -29346,7 +29346,7 @@ class Sample {
 }
 ```
 
-**Anahtar Notlar:** Java'ya örnek aldığı dillerden aktarılan ancak pratikte kullanılmayan bir sentaks vardır. Buna göre non-static metot istenirse birinci parametresi ilgili UDT türünden ve ismi this olan bir referans olarak da bildirilebilir. Bu referansın olması ile olmaması arasında bir fark yoktur. Pratikte kullanılmaz.
+**Anahtar Notlar:** Java'ya örnek aldığı bazı dillerden aktarılan ancak pratikte kullanılmayan bir sentaks vardır. Buna göre non-static metot istenirse birinci parametresi ilgili UDT türünden ve ismi this olan bir referans olarak da bildirilebilir. Bu referansın olması ile olmaması arasında bir fark yoktur. Pratikte kullanılmaz.
 
 >Aşağıdaki demo örnekte bulunan setX ve getX metotlarının `Sample this`parametrelerinin yazılması ile yazılmaması arasında fark yoktur. Pratikte yazmayacağız
 
